@@ -10,7 +10,7 @@ function Detail() {
     const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(() => {
-        async function fetchNoteDetail() {
+        async function fetchTokenDetail() {
             try {
                 const response = await fetch(`http://145.24.223.22:8888/tokens/${id}`, {
                 // const response = await fetch(`http://localhost:8888/tokens/${id}`, {
@@ -21,20 +21,17 @@ function Detail() {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch note details");
+                    throw new Error("Failed to fetch token details");
                 }
-                if (!isLoading && !token) {
-                    return <NotFound />;
-                }
-                const data = await response.json();
-                setToken(data);
+                const data = await response.json(); // json data
+                setToken(data); //
                 setIsLoading(false);
             } catch (error) {
-                console.error("Error fetching note details:", error);
+                console.error("Error fetching token details:", error);
                 setIsLoading(false);
             }
         }
-        fetchNoteDetail();
+        fetchTokenDetail();
     }, [id]);
 
     const toggleFavorite = async () => {
@@ -73,7 +70,7 @@ function Detail() {
     //     return <p>Token not found.</p>;
     // }
 
-    if (!token) {
+    if (!isLoading && !token) {
         return <NotFound />;
     }
 

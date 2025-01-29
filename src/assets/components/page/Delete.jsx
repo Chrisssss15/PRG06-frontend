@@ -13,7 +13,7 @@ function DeleteToken({ id }) {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to delete note");
+                throw new Error("Failed to delete token");
             }
 
             alert("Token deleted successfully");

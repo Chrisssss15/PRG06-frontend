@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 function EditToken() {
     const { id } = useParams();
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // leidt de client naar een ander pagina
     const [formData, setFormData] = useState({ nameToken: '', tigger: '', adress: '' });
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        async function fetchNoteDetail() {
+        async function fetchTokenDetail() {
             try {
                 const response = await fetch(`http://145.24.223.22:8888/tokens/${id}`, {
                 // const response = await fetch(`http://localhost:8888/tokens/${id}`, {
@@ -20,7 +20,7 @@ function EditToken() {
                 });
 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch note details");
+                    throw new Error("Failed to fetch token details");
                 }
 
                 const data = await response.json();
@@ -31,11 +31,11 @@ function EditToken() {
                 });
                 setIsLoading(false);
             } catch (error) {
-                console.error("Error fetching note details:", error);
+                console.error("Error fetching token details:", error);
                 setIsLoading(false);
             }
         }
-        fetchNoteDetail();
+        fetchTokenDetail();
     }, [id]);
 
     const handleInputChange = (event) => {
@@ -61,7 +61,7 @@ function EditToken() {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to update note");
+                throw new Error("Failed to update token");
             }
 
             alert("Token successfully updated");
