@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SingleToken from "../../SingleToken.jsx";
+import SingleToken from "../SingleToken.jsx";
 
 function Token() {
     const [tokens, setTokens] = useState([]);
