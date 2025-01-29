@@ -36,13 +36,13 @@ function Token() {
         fetchTokens(currentPage);
     }, [currentPage]);
 
-    const handleNextPage = () => {
+    const nextPage = () => {
         if (currentPage < totalPages) {
             setCurrentPage(currentPage + 1);
         }
     };
 
-    const handlePrevPage = () => {
+    const prevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
@@ -56,7 +56,7 @@ function Token() {
     });
 
     return (
-        <div>
+        <div className="bg-white p-4 fixed top-12 left-0 w-full z-12">
             {isLoading && <div>Loading...</div>}
 
             <div className="flex justify-center space-x-4 my-4">
@@ -90,7 +90,7 @@ function Token() {
 
             <div className="flex items-center justify-center space-x-4 mt-6">
                 <button
-                    onClick={handlePrevPage}
+                    onClick={prevPage}
                     disabled={currentPage === 1}
                     className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition"
                 >
@@ -100,7 +100,7 @@ function Token() {
                     Page {currentPage} of {totalPages}
                 </span>
                 <button
-                    onClick={handleNextPage}
+                    onClick={nextPage}
                     disabled={currentPage === totalPages}
                     className="px-6 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-blue-600 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed transition"
                 >

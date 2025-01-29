@@ -55,7 +55,7 @@ function FormComponent({ onResourceAdded }) {
 
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 shadow-lg rounded-lg space-y-6 mt-20">
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto justify-center bg-white p-8 shadow-lg rounded-lg space-y-6 mt-20 fixed top-12 left-0 w-full z-12">
             <div>
                 <label htmlFor="nameToken" className="block text-gray-700 font-semibold mb-2">
                     Name token:
